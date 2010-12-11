@@ -78,11 +78,3 @@ class Project(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('portfolio.views.project_detail', [str(self.slug)])
-
-class ProjectMeta(models.Model):
-    project = models.ForeignKey(Project)
-    key = models.CharField(max_length=50)
-    value = models.CharField(max_length=50)
-
-    def __unicode__(self):
-        return self.key

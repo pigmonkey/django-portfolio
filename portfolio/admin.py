@@ -17,5 +17,4 @@ class RoleAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
 admin.site.register(Role, RoleAdmin)
 
-admin.site.register(ProjectMeta)
 admin.site.register(Client)
