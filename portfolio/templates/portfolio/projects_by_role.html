@@ -1,0 +1,11 @@
+{% extends "portfolio/base.html" %}
+{% block title %}{% if type %}{{ type|capfirst }} {{ role.slug|capfirst }}{% else %}Role: {{ role|capfirst }}{% endif %} {% endblock %}
+
+
+{% block entry %}
+
+<h2>{% if type %}{{ type|capfirst }} {{ role.slug|capfirst }}{% else %}Role: {{ role|capfirst }}{% endif %}</h2>
+
+{% include "portfolio/projects_list.html" %}
+
+{% endblock %}

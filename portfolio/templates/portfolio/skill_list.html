@@ -1,0 +1,14 @@
+{% extends "portfolio/base.html" %}
+{% block title %}Skill{{ skill_list|pluralize }}{% endblock %}
+
+{% block entry %}
+
+<h2>Skill{{ skill_list|pluralize }}</h2>
+
+<ul id="skills">
+    {% for skill in skill_list %}
+        <li><a href="{% url portfolio.views.projects_by_skill skill.slug %}">{{ skill.name }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+A simply Django app creating a portfolio.
+
+My first Django app!
+
+Requirements:
+    - sorl-thumbnail for thumbnail generation
+        http://thumbnail.sorl.net/

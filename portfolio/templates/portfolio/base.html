@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Portfolio{% endblock %}
+
+{% block content %}
+<h1>Portfolio</h1>
+
+<ul id="portfolio-nav">
+    <li class="projects"><a href="{% url projects_view %}">Projects</a></li>
+    <li class="view-by">View Projects By:
+        <ul>
+            <li class="skills"><a href="{% url skills_view %}">Skills</a></li>
+            <li class="roles"><a href="{% url roles_view %}">Roles</a></li>
+            <li class="types"><a href="{% url types_view %}">Types</a></li>
+        </ul>
+    </li>
+</ul>
+
+<div id="entry" class="portfolio">
+{% block entry %}
+{% endblock %}
+</div>
+
+{% endblock %}

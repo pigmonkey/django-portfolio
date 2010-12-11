@@ -1,0 +1,58 @@
+{% extends "portfolio/base.html" %}
+{% block title %}{{ project.name }}{% endblock %}
+
+{% block entry %}
+
+<h2>{{ project.name }}</h2>
+
+{% if project.url %}
+<div class="url">{{ project.url|urlize }}</div>
+{% endif %}
+
+{% if project.image %}
+    {% load thumbnail %}
+    
+    {% thumbnail project.image "300x300" as im %}
+    <a class="image" href="{{ project.image.url }}"><img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ project.name}} Image"></a>
+    {% endthumbnail %}
+{% endif %}
+
+<div class="description">
+
+<dl>
+    <dt>Role{{ project.role.all|pluralize }}</dt>
+        <dd>
+        {% spaceless %}
+            {% for role in project.role.all %}
+                {% if forloop.last %}
+                    <a href="{% url portfolio.views.projects_by_role type_slug=project.type.slug role_slug=role.slug %}">{{ role|capfirst }}</a>
+                {% else %}
+                    <a href="{% url portfolio.views.projects_by_role type_slug=project.type.slug role_slug=role.slug %}">{{ role|capfirst }}</a>,
+                {% endif %}
+            {% endfor %}
+        {% endspaceless %}
+        </dd>
+    <dt>Launched</dt>
+        <dd>{{ project.completion_date }}</dd>
+</dl>
+
+
+<p>{{ project.short_description }}</p>
+
+{{ project.description|safe|linebreaks }}
+
+<h3>Skill{{ project.skills.all|pluralize }} Used</h3>
+
+<ul class="skills-used">
+{% for skill in project.skills.all %}
+    {% if forloop.last %}
+        <li><a href="{% url portfolio.views.projects_by_skill skill.slug %}">{{ skill }}</a></li>
+    {% else %}
+        <li><a href="{% url portfolio.views.projects_by_skill skill.slug %}">{{ skill }}</a>,</li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "portfolio/base.html" %}
+{% block title %}Skill: {{ skill }}{% endblock %}
+
+{% block entry %}
+
+<h2>Skill: {{ skill }}</h2>
+
+{% if skill.description %}
+{{ skill.description|safe|linebreaks }}
+{% endif %}
+
+<h3>Related Project{{ project_list|pluralize }}</h3>
+
+{% include "portfolio/projects_list.html" %}
+
+{% endblock %}

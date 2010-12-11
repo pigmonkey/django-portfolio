@@ -1,0 +1,14 @@
+{% extends "portfolio/base.html" %}
+{% block title %}Project Type{{ type_list|pluralize }}{% endblock %}
+
+{% block entry %}
+
+<h2>Project Type{{ type_list|pluralize }}</h2>
+
+<ul id="types">
+    {% for type in type_list %}
+        <li><a href="{% url portfolio.views.projects_by_type type.slug %}">{{ type.name|capfirst }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

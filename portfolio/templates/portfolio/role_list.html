@@ -1,0 +1,14 @@
+{% extends "portfolio/base.html" %}
+{% block title %}Role{{ role_list|pluralize }}{% endblock %}
+
+{% block entry %}
+
+<h2>Role{{ role_list|pluralize }}</h2>
+
+<ul id="roles">
+    {% for role in role_list %}
+        <li><a href="{% url portfolio.views.projects_by_role role.slug %}">{{ role.name|capfirst }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

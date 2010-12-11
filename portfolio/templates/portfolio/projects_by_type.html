@@ -1,0 +1,10 @@
+{% extends "portfolio/base.html" %}
+{% block title %}Type: {{ type.name|capfirst }}{% endblock %}
+
+{% block entry %}
+
+<h2>Type: {{ type.name|capfirst }}</h2>
+
+{% include "portfolio/projects_list.html" %}
+
+{% endblock %}
