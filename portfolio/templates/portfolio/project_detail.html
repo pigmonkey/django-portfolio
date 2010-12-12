@@ -9,6 +9,7 @@
 <div class="url">{{ project.url|urlize }}</div>
 {% endif %}
 
+{% spaceless %}
 {% if project.image %}
     {% load thumbnail %}
     
@@ -16,6 +17,7 @@
     <a class="image" href="{{ project.image.url }}"><img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ project.name}} Image"></a>
     {% endthumbnail %}
 {% endif %}
+{% endspaceless %}
 
 <div class="description">
 
