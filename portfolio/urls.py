@@ -1,7 +1,8 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
 from django.views.generic import list_detail
-from views import projects_by_type, projects_by_role, projects_by_skill, project_detail
+#from views import projects_by_type, projects_by_role, projects_by_skill, project_detail
+from portfolio import views
 from models import Type, Role, Skill, Project
 
 admin.autodiscover()
@@ -30,11 +31,11 @@ projects = {
 urlpatterns = patterns('',
     (r'^$', list_detail.object_list, projects, "projects_view"),
     (r'^types/$', list_detail.object_list, types, "types_view"),
-    (r'^type/(\w+)/$', projects_by_type),
+    (r'^type/([-\w]+)/$', views.projects_by_type),
     (r'^roles/$', list_detail.object_list, roles, "roles_view"),
-    (r'^role/(?P<role_slug>\w+)/$', projects_by_role, {'type_slug': 'all'}),
+    (r'^role/(?P<role_slug>[-\w]+)/$', views.projects_by_role, {'type_slug': 'all'}),
     (r'^skills/$', list_detail.object_list, skills, "skills_view"),
-    (r'^skill/(\w+)/$', projects_by_skill),
-    (r'^(?P<type_slug>\w+)/(?P<role_slug>\w+)/$', projects_by_role),
-    (r'^(?P<slug>\w+)/$', project_detail),
+    (r'^skill/([-\w]+)/$', views.projects_by_skill),
+    (r'^(?P<type_slug>[-\w]+)/(?P<role_slug>[\-w]+)/$', views.projects_by_role),
+    url(r'^(?P<slug>[-\w]+)/$', views.project_detail,),
 )
