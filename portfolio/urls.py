@@ -1,7 +1,6 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
 from django.views.generic import list_detail
-#from views import projects_by_type, projects_by_role, projects_by_skill, project_detail
 from portfolio import views
 from models import Type, Role, Skill, Project
 
