@@ -5,7 +5,7 @@
         <li>
             <h3><a href="{% url portfolio.views.project_detail project.slug %}">{{ project.name }}</a></h3>
             {% if project.image %}
-                {% thumbnail project.image "240x240" crop="center" as im %}
+                {% thumbnail project.image "200x200" crop="top" as im %}
                 <a href="{% url portfolio.views.project_detail project.slug %}"><img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"  alt="{{ project.name}} Image"></a>
                 {% endthumbnail %}
             {% endif %}
