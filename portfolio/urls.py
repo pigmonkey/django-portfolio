@@ -35,6 +35,6 @@ urlpatterns = patterns('',
     (r'^role/(?P<role_slug>[-\w]+)/$', views.projects_by_role, {'type_slug': 'all'}),
     (r'^skills/$', list_detail.object_list, skills, "skills_view"),
     (r'^skill/([-\w]+)/$', views.projects_by_skill),
-    (r'^(?P<type_slug>[-\w]+)/(?P<role_slug>[\-w]+)/$', views.projects_by_role),
+    (r'^(?P<type_slug>[-\w]+)/(?P<role_slug>[-\w]+)/$', views.projects_by_role),
     url(r'^(?P<slug>[-\w]+)/$', views.project_detail,),
 )
