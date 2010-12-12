@@ -2,6 +2,30 @@ A simply Django app creating a portfolio.
 
 My first Django app!
 
+Notes:
+    - The template attempts to expand a base.html file in your main template
+      directory. If you don't have one of these, things will be screwy.
+
+    - The Portfolio templates are written to expand an HTML template --
+      not XHTML! If you want to use XHTML, you'll have to go through the
+      template files and properly close things like img tags.
+
+Installation:
+    1) Copy (or link) the Portfolio directory inside your django project.
+    2) Add 'portfolio' to INSTALLED_APPS in your project's settings.py
+    3) Add relevant URLs to your project's urls.py
+        Example:
+            (r'^portfolio/', include('portfolio.urls')),
+    4) Run manage.py syncdb
+    5) Profit?
+
 Requirements:
     - sorl-thumbnail for thumbnail generation
         http://thumbnail.sorl.net/
+
+        If you don't want to use sorl-thumbnail, remove the thumbnail logic from
+        the following files:
+            - templates/portfolio/projects_list.html
+            - templates/portfolio/project_detail.html
+
+        Also remove line 2 from models.py
