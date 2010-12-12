@@ -5,7 +5,7 @@ from models import Project, Type, Role, Skill
 def projects_by_type(request, slug):
 
     # Look up type (and raise a 404 if it can't be found).
-    type = get_object_or_404(Type, slug__iexact=slug)
+    type = get_object_or_404(Type, slug=slug)
 
     # Use the generic object_list view to return the list of projects
     return list_detail.object_list(
@@ -19,13 +19,13 @@ def projects_by_type(request, slug):
 def projects_by_role(request, type_slug, role_slug):
 
     # Look up role (and raise a 404 if it can't be found).
-    role = get_object_or_404(Role, slug__iexact=role_slug)
+    role = get_object_or_404(Role, slug=role_slug)
 
     context = {'role': role}
 
     # If a specific type is requested, look up type (and raise a 404 if it can't be found)
     if type_slug != 'all':
-        type = get_object_or_404(Type, slug__iexact=type_slug)
+        type = get_object_or_404(Type, slug=type_slug)
         context['type'] = type
     else:
         type = type_slug
@@ -48,7 +48,7 @@ def projects_by_role(request, type_slug, role_slug):
 def projects_by_skill(request, slug):
 
     # Look up skill (and raise a 404 if it can't be found).
-    skill = get_object_or_404(Skill, slug__iexact=slug)
+    skill = get_object_or_404(Skill, slug=slug)
 
     # Use the generic object_list view to return the list of projects
     return list_detail.object_list(
@@ -62,13 +62,12 @@ def projects_by_skill(request, slug):
 def project_detail(request, slug):
 
     # Look up project (and raise a 404 if it can't be found).
-    project = get_object_or_404(Project, slug__iexact=slug)
+    project = get_object_or_404(Project, slug=slug)
 
     return list_detail.object_detail(
         request,
         queryset = Project.objects.all(),
-        slug = slug,
-        slug_field = 'slug',
+        object_id = project.id,
         template_name = 'portfolio/project_detail.html',
         template_object_name = 'project'
     )
