@@ -22,7 +22,7 @@ skills = {
 }
 
 projects = {
-    'queryset': Project.objects.all(),
+    'queryset': Project.objects.filter(public=True),
     'template_object_name': 'project',
     'template_name': 'portfolio/all_projects.html',
 }

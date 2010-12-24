@@ -10,7 +10,7 @@ def projects_by_type(request, slug):
     # Use the generic object_list view to return the list of projects
     return list_detail.object_list(
         request,
-        queryset = Project.objects.filter(type=type),
+        queryset = Project.objects.filter(public=True, type=type),
         template_name = 'portfolio/projects_by_type.html',
         template_object_name = 'project',
         extra_context = {'type': type}
@@ -32,9 +32,9 @@ def projects_by_role(request, type_slug, role_slug):
 
     # Filter the queryset for the (type and) role requested
     if type != type_slug:
-        queryset = Project.objects.filter(type=type).filter(role=role)
+        queryset = Project.objects.filter(public=True, type=type, role=role)
     else:
-        queryset = Project.objects.filter(role=role)
+        queryset = Project.objects.filter(public=True, role=role)
 
     # Use the generic object_list view to return the list of projects
     return list_detail.object_list(
@@ -53,7 +53,7 @@ def projects_by_skill(request, slug):
     # Use the generic object_list view to return the list of projects
     return list_detail.object_list(
         request,
-        queryset = Project.objects.filter(skills=skill),
+        queryset = Project.objects.filter(public=True, skills=skill),
         template_name = 'portfolio/projects_by_skill.html',
         template_object_name = 'project',
         extra_context = {'skill': skill}
@@ -66,7 +66,7 @@ def project_detail(request, slug):
 
     return list_detail.object_detail(
         request,
-        queryset = Project.objects.all(),
+        queryset = Project.objects.filter(public=True),
         object_id = project.id,
         template_name = 'portfolio/project_detail.html',
         template_object_name = 'project'

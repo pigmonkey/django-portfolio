@@ -68,6 +68,7 @@ class Project(models.Model):
     role = models.ManyToManyField(Role)
     skills = models.ManyToManyField(Skill)
     client = models.ForeignKey(Client)
+    public = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['-completion_date']
