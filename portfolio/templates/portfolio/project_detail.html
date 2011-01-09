@@ -14,7 +14,7 @@
     {% load thumbnail %}
     
     {% thumbnail project.image "300x300" as im %}
-    <a class="image" href="{{ project.image.url }}" title="View full size image for {{ project }}"><img src="{{ im.url }}" width="{{ im.width }}px" height="{{ im.height }}px" alt="{{ project.name}} Image"></a>
+    <a class="image" href="{{ project.image.url }}" title="View full size image for {{ project }}"><img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ project.name}} Image"></a>
     {% endthumbnail %}
 {% endif %}
 {% endspaceless %}
